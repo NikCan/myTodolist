@@ -46,15 +46,10 @@ export const Todolist: React.FC<TodolistPropsType> = ({
     const callBackHandler = (newMainTitle: string) => {
         editMainTitle(todolistId, newMainTitle)
     }
-    const deleteTask = (taskId: string) => {
-        dispatch(deleteTaskAC(todolistId, taskId))
-    }
-    const changeTaskStatus = (taskId: string, checked: boolean) => {
-        dispatch(changeTaskStatusAC(todolistId, taskId, checked))
-    }
-    const editeTaskTitle = (tId: string, newTitle: string) => {
-        dispatch(editeTaskTitleAC(todolistId, tId, newTitle))
-    }
+    const deleteTask = (taskId: string) => dispatch(deleteTaskAC(todolistId, taskId))
+    const changeTaskStatus = (taskId: string, checked: boolean) => dispatch(changeTaskStatusAC(todolistId, taskId, checked))
+    const editeTaskTitle = (tId: string, newTitle: string) => dispatch(editeTaskTitleAC(todolistId, tId, newTitle))
+
     return (
         <div>
             <h3><EditableSpan title={mainTitle} onChange={callBackHandler}/>

@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import {Todolist} from "./component/Todolist";
-import {v1} from "uuid";
 import {AddItemForm} from "./component/AddItemForm";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -13,7 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import Toolbar from "@mui/material/Toolbar";
 import {AppRootStateType} from "./state/store";
-import {addTaskAC, tasksStateType} from "./state/tasks-reducer";
+import {addTaskAC} from "./state/tasks-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {addTodolistAC, todolistType} from "./state/todolists-reducer";
 
@@ -21,16 +20,14 @@ export type filterType = "all" | "active" | "completed"
 
 function App() {
     const todolists = useSelector<AppRootStateType, todolistType[]>(state => state.todolists)
-    const tasks = useSelector<AppRootStateType, tasksStateType>(state => state.tasks)
     const dispatch = useDispatch()
     const addTask = (todolistId: string, newTitle: string) => {
         dispatch(addTaskAC(todolistId, newTitle))
     }
-        const changeFilter = (todolistId: string, newFilter: filterType) => {
+    const changeFilter = (todolistId: string, newFilter: filterType) => {
         // setTodolists(todolists.map(t => t.todolistId === todolistId ? {...t, filter: newFilter} : t))
     }
-
-        const addTodolist = (title: string) => {
+    const addTodolist = (title: string) => {
         dispatch(addTodolistAC(title))
     }
     const deleteTodolist = (todolistId: string) => {
