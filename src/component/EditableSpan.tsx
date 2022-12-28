@@ -3,7 +3,7 @@ import {TextField} from "@mui/material";
 
 type EditableSpanType = {
     title: string
-    callBack: (newTitle: string) => void
+    onChange: (newTitle: string) => void
 }
 
 export function EditableSpan(props: EditableSpanType) {
@@ -16,12 +16,12 @@ export function EditableSpan(props: EditableSpanType) {
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)
     const onBlurHandler = () => {
         setEditMode(false)
-        props.callBack(title)
+        props.onChange(title)
     }
     const onEnterDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.code === "Enter") {
             setEditMode(false)
-            props.callBack(title)
+            props.onChange(title)
         }
     }
     return <>
